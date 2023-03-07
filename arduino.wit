@@ -1,0 +1,17 @@
+default interface arduino-api {
+
+    enum pin-level {
+        LOW,
+        HIGH
+    }
+
+    pin-mode: func(pin: u8)
+    digital-write: func(pin: u8, level: pin-level)
+    digital-read: func(pin: u8) -> pin-level
+
+    delay: func(ms: u32)
+}
+
+default world arduino {
+    export arduino: self.arduino-api
+}
